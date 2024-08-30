@@ -1195,4 +1195,15 @@
 	</ControlTemplate>
 
 	<!-- EDIT HERE -->
+
+	<ControlTemplate x:Key="ActionResources.ActionGroup.ComboPointREPikuGroup" TargetType="ls:LSActionPoint">
+	<ControlTemplate.Resources>
+		<ImageSource x:Key="Highlight">/GustavNoesisGUI;component/Assets/PikusRogueExtended/ActionResources_c/Icons/c_ico_classRes_ComboPointREPiku_h.png</ImageSource>
+		<ImageSource x:Key="Available">/GustavNoesisGUI;component/Assets/PikusRogueExtended/ActionResources_c/Icons/c_ico_classRes_ComboPointREPiku_d.png</ImageSource>
+		<ImageSource x:Key="Used">/GustavNoesisGUI;component/Assets/PikusRogueExtended/ActionResources_c/Icons/c_ico_classRes_ComboPointREPiku_spent.png</ImageSource>
+		<ImageSource x:Key="Missing">/GustavNoesisGUI;component/Assets/PikusRogueExtended/ActionResources_c/Icons/c_ico_classRes_ComboPointREPiku_missing.png</ImageSource>
+	</ControlTemplate.Resources>
+	<ContentPresenter ContentTemplate="{StaticResource ActionResources.ActionGroup.ActionPoint}"/>
+</ControlTemplate>
+
 </ResourceDictionary>
