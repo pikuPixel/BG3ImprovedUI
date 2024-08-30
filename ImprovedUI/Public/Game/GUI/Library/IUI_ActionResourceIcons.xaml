@@ -348,6 +348,9 @@
 	<ImageSource x:Key="FuryPointMerciless">pack://application:,,,/GustavNoesisGUI;component/Assets/MercilessBarbarianOverhaul/Shared/Resources/ico_classRes_FuryPointMerciless_d.png</ImageSource>
 	<ImageSource x:Key="FuryPointMercilessUnavailable">pack://application:,,,/GustavNoesisGUI;component/Assets/MercilessBarbarianOverhaul/Shared/Resources/ico_classRes_FuryPointMerciless_missing.png</ImageSource>
 	<!-- EDIT HERE -->
+	<ImageSource x:Key="ComboPointREPiku">pack://application:,,,/GustavNoesisGUI;component/Assets/PikusRogueExtended/Shared/Resources/ico_classRes_ComboPointREPiku_d.png</ImageSource>
+	<ImageSource x:Key="ComboPointREPikuUnavailable">pack://application:,,,/GustavNoesisGUI;component/Assets/PikusRogueExtended/Shared/Resources/ico_classRes_ComboPointREPiku_missing.png</ImageSource>
+
 
 	<!-- This is the icon that appears on the tooltip -->
 	<Style TargetType="Image" x:Key="IUI_ActionResourceTypeIdToSource" BasedOn="{StaticResource IUI_ActionResourceTypeIdToSourceDefault}">
@@ -737,6 +740,10 @@
 				<Setter Property="Source" Value="{StaticResource FuryPointMerciless}"/>
 			</DataTrigger>
 			<!-- EDIT HERE -->
+			<DataTrigger Binding="{Binding TypeId}" Value="ComboPointREPiku">
+				<Setter Property="Source" Value="{StaticResource ComboPointREPiku}"/>
+			</DataTrigger>
+
 		</Style.Triggers>
 	</Style>
 
@@ -2406,6 +2413,17 @@
 			</MultiDataTrigger>
 
 			<!-- EDIT HERE -->
+			<MultiDataTrigger>
+				<MultiDataTrigger.Conditions>
+					<Condition Binding="{Binding TypeId}" Value="ComboPointREPiku"/>
+					<Condition Binding="{Binding Value}" Value="0"/>
+					<Condition Binding="{Binding IgnoreCost}" Value="False"/>
+				</MultiDataTrigger.Conditions>
+				<MultiDataTrigger.Setters>
+					<Setter Property="Source" Value="{StaticResource ComboPointREPikuUnavailable}"/>
+				</MultiDataTrigger.Setters>
+			</MultiDataTrigger>
+
 		</Style.Triggers>
 	</Style>
 
@@ -3696,6 +3714,17 @@
 	</ControlTemplate>
 
 	<!-- EDIT HERE -->
+
+		<ControlTemplate x:Key="ActionResources.ActionGroup.ComboPointREPikuGroup" TargetType="ls:LSActionPoint">
+			<ControlTemplate.Resources>
+				<ImageSource x:Key="Highlight">/GustavNoesisGUI;component/Assets/PikusRogueExtended/Shared/Resources/ico_classRes_ComboPointREPiku_h.png</ImageSource>
+				<ImageSource x:Key="Available">/GustavNoesisGUI;component/Assets/PikusRogueExtended/Shared/Resources/ico_classRes_ComboPointREPiku_d.png</ImageSource>
+				<ImageSource x:Key="Used">/GustavNoesisGUI;component/Assets/PikusRogueExtended/Shared/Resources/ico_classRes_ComboPointREPiku_spent.png</ImageSource>
+				<ImageSource x:Key="Missing">/GustavNoesisGUI;component/Assets/PikusRogueExtended/Shared/Resources/ico_classRes_ComboPointREPiku_missing.png</ImageSource>
+			</ControlTemplate.Resources>
+			<ContentControl ContentTemplate="{StaticResource ActionResources.ActionGroup.ActionPoint}"/>
+		</ControlTemplate>
+
 
 	<!-- Setup default styles that are inherited before changes are applied, do not touch these -->
 	<ControlTemplate x:Key="ActionResources.ActionGroup.FallbackActionPointGroup">
@@ -5645,6 +5674,21 @@
 			</MultiDataTrigger>
 
 			<!-- EDIT HERE -->
+
+			<DataTrigger Binding="{Binding TypeId}" Value="ComboPointREPiku">
+				<Setter Property="ActionPointTemplate" Value="{DynamicResource ActionResources.ActionGroup.ComboPointREPikuGroup}"/>
+				<Setter Property="ActionPointSize" Value="{DynamicResource ActionResources.ActionPointSize}" />
+			</DataTrigger>
+			<MultiDataTrigger>
+				<MultiDataTrigger.Conditions>
+					<Condition Binding="{Binding TypeId}" Value="ComboPointREPiku"/>
+					<Condition Binding="{Binding Value, Converter={StaticResource GreaterThanConverter}, ConverterParameter=1}" Value="True"/>
+				</MultiDataTrigger.Conditions>
+				<MultiDataTrigger.Setters>
+					<Setter Property="Margin" Value="0,-15,0,0"/>
+				</MultiDataTrigger.Setters>
+			</MultiDataTrigger>
+
 		</Style.Triggers>
 	</Style>
 </ResourceDictionary>
